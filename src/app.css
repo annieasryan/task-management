@@ -1,3 +1,16 @@
-* {
+body {
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(34,187,199,1) 0%, rgba(231,95,205,1) 66%, rgba(255,0,215,1) 100%);
+}
+
+.task-list {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 20px;
+    background-color: inherit
+}
+
+.status-container {
+    background-color: rgb(198, 223, 223);
+    height: fit-content;
 }
