@@ -23,7 +23,6 @@ const CreateModal = ({ show, onHide }) => {
 
   const createNewTask = () => {
     dispatch(createTask(data));
-    localStorage.setItem("tasks", JSON.stringify(tasks));
     onHide();
   };
  
