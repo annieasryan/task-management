@@ -1,7 +1,9 @@
-import { Button, Form, Modal } from "react-bootstrap";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Button, Form, Modal } from "react-bootstrap";
+import { TASK_PRIORITIES } from "../../helpers";
 import { createTask } from "../../Redux/Reducers/actions";
+import "./createModal.css";
 
 const CreateModal = ({ show, onHide }) => {
   const [data, setData] = useState({
@@ -10,9 +12,7 @@ const CreateModal = ({ show, onHide }) => {
     priority: "",
   });
 
-  const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
-
 
   const handleChange = (e) => {
     setData((prev) => ({
@@ -25,12 +25,13 @@ const CreateModal = ({ show, onHide }) => {
     dispatch(createTask(data));
     onHide();
   };
- 
 
   return (
     <>
       <Modal show={show} onHide={onHide}>
-        <Modal.Header closeButton/>
+        <Modal.Header closeButton>
+          <h5>Create new task</h5>
+        </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group
@@ -38,7 +39,7 @@ const CreateModal = ({ show, onHide }) => {
               controlId="exampleForm.ControlInput1"
               onChange={handleChange}
             >
-              <Form.Label>Task title</Form.Label>
+              <Form.Label>Title</Form.Label>
               <Form.Control type="text" name="title" autoFocus />
             </Form.Group>
             <Form.Group
@@ -46,7 +47,7 @@ const CreateModal = ({ show, onHide }) => {
               controlId="exampleForm.ControlTextarea1"
               onChange={handleChange}
             >
-              <Form.Label>Task description</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control as="textarea" rows={3} name="description" />
             </Form.Group>
             <Form.Group
@@ -54,12 +55,11 @@ const CreateModal = ({ show, onHide }) => {
               controlId="exampleForm.ControlSelect1"
               onChange={handleChange}
             >
-              <Form.Label>Task priority</Form.Label>
+              <Form.Label>Priority</Form.Label>
               <Form.Control as="select" name="priority">
-                <option></option>
-                <option>Low</option>
-                <option>Normal</option>
-                <option>High</option>
+                {TASK_PRIORITIES.map(priority=>(
+                  <option key={priority}>{priority}</option>
+                ))}
               </Form.Control>
             </Form.Group>
           </Form>

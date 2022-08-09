@@ -5,7 +5,7 @@ import "./taskList.css";
 const TaskList = ({ status, tasks }) => {
   return (
     <div>
-      <div className="text-uppercase text-center status-header">
+      <div className="text-uppercase p-2 status-header">
         <h6 className="mb-0">{status}</h6>
       </div>
       {tasks.map((task) => (

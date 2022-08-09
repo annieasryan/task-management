@@ -17,7 +17,7 @@ function App() {
     TASK_STATUSES.map(status => {
         const filteredTask = tasks.filter(task=>task.status === status)
         return (
-          <div key={status} className="w-25 text-center status-container">
+          <div key={status} className="w-50 status-container">
           <TaskList key={status} status={status} tasks={filteredTask}/>
           </div>
         )
@@ -26,12 +26,12 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <h4 className="text-light text-center text-uppercase">
+      <h4 className="text-light text-center text-uppercase mt-3">
         Task management platform
       </h4>
       <div className="container">
         <nav>
-          <button className="btn btn-primary" onClick={() => setShow(true)}>
+          <button className="btn" onClick={() => setShow(true)}>
             Add Task
           </button>
         </nav>

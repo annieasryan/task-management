@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "react-bootstrap";
-import { TASK_STATUSES } from "../../helpers";
+import { TASK_PRIORITIES, TASK_STATUSES } from "../../helpers";
 import { editTask } from "../../Redux/Reducers/actions";
 
 const EditModal = ({ task, show, onHide }) => {
-    const [updatedData, setUpdatedData] = useState({
-      id:task.id,
-      title: task.title,
-      description: task.description,
-      priority: task.priority,
-      status: task.status,
-    });
+  const [updatedData, setUpdatedData] = useState({
+    id: task.id,
+    title: task.title,
+    description: task.description,
+    priority: task.priority,
+    status: task.status,
+  });
 
   const dispatch = useDispatch();
 
@@ -26,11 +26,11 @@ const EditModal = ({ task, show, onHide }) => {
     dispatch(editTask(updatedData));
     onHide();
   };
-  
+
   return (
     <>
       <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton/>
+        <Modal.Header closeButton />
         <Modal.Body>
           <Form>
             <Form.Group
@@ -38,7 +38,7 @@ const EditModal = ({ task, show, onHide }) => {
               controlId="exampleForm.ControlInput1"
               onChange={handleChange}
             >
-              <Form.Label>Task title</Form.Label>
+              <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 name="title"
@@ -51,7 +51,7 @@ const EditModal = ({ task, show, onHide }) => {
               controlId="exampleForm.ControlTextarea1"
               onChange={handleChange}
             >
-              <Form.Label>Task description</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -64,14 +64,15 @@ const EditModal = ({ task, show, onHide }) => {
               controlId="exampleForm.ControlSelect1"
               onChange={handleChange}
             >
-              <Form.Label>Task priority</Form.Label>
-              <Form.Control as="select" name="priority" 
-              defaultValue={updatedData.priority}
+              <Form.Label>Priority</Form.Label>
+              <Form.Control
+                as="select"
+                name="priority"
+                defaultValue={updatedData.priority}
               >
-                {/* <option></option> */}
-                <option>Low</option>
-                <option>Normal</option>
-                <option>High</option>
+                {TASK_PRIORITIES.map((priority) => (
+                  <option key={priority}>{priority}</option>
+                ))}
               </Form.Control>
             </Form.Group>
             <Form.Group
@@ -80,9 +81,13 @@ const EditModal = ({ task, show, onHide }) => {
               onChange={handleChange}
             >
               <Form.Label>Status</Form.Label>
-              <Form.Control as="select" name="status" defaultValue={updatedData.status}>
-                {TASK_STATUSES.map(status=>(
-                    <option key={status}>{status}</option>
+              <Form.Control
+                as="select"
+                name="status"
+                defaultValue={updatedData.status}
+              >
+                {TASK_STATUSES.map((status) => (
+                  <option key={status}>{status}</option>
                 ))}
               </Form.Control>
             </Form.Group>
