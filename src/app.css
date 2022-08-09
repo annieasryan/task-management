@@ -7,10 +7,28 @@ body {
     justify-content: center;
     position: relative;
     gap: 20px;
-    background-color: inherit
+    
 }
 
 .status-container {
-    background-color: rgb(198, 223, 223);
+    background-color: rgb(241, 194, 234);
     height: fit-content;
 }
+
+.btn {
+    background-color:rgb(215 57 200);
+    border:none;
+    color:white
+}
+
+.btn:active,
+.btn:focus,
+.btn:hover{
+    background-color:rgb(150, 27, 137) ;
+    box-shadow: none;
+    color:white;
+    border:none
+}
+
+
+

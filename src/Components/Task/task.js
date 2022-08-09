@@ -11,9 +11,9 @@ const Task = ({ task }) => {
   return (
     <>
       <div className="single-task" onClick={() => setShow(true)}>
-        <h4 className="text-break p-2 ">{task.title}</h4>
-        <p className="text-break p-2">{task.description}</p>
-        <p className="priority">
+        <h5 className="text-break p-1 m-0">{task.title}</h5>
+        <p className="text-break p-1 m-0">{task.description}</p>
+        <p className="p-1 m-0">
           <span>Priority: </span>
           {task.priority}
         </p>

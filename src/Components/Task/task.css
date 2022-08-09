@@ -1,8 +1,5 @@
 .single-task {
-    border-bottom: 3px solid rgb(106, 115, 243);
+    border-bottom: 4px solid rgb(215 57 200);
+    cursor: pointer;
 } 
 
-.priority {
-    font-weight: 500;
-    font-style: italic;
-}
